@@ -1,0 +1,26 @@
+{
+  "name": "browser-sub-pub",
+  "version": "1.0.0",
+  "description": "sub-pub utils for browser",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lovetingyuan/browser-sub-pub.git"
+  },
+  "keywords": [
+    "sub",
+    "pub",
+    "browser",
+    "subscribe",
+    "publish",
+    "event",
+    "listen",
+    "emit"
+  ],
+  "author": "tingyuan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lovetingyuan/browser-sub-pub/issues"
+  },
+  "homepage": "https://github.com/lovetingyuan/browser-sub-pub#readme"
+}
