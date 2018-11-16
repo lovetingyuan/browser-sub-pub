@@ -7,6 +7,10 @@ npm install browser-sub-pub --save-dev
 ```
 
 ## usage
+```html
+  <script src="browser-sub-pub/browser.js"></script>
+```
+or
 ```javascript
 import { listen, emit } from 'node_modules/browser-sub-pub/index.js'
 const unlisten = listen('event-a', e => e.detail) // 'aaa'

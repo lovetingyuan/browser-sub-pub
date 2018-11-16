@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "sub-pub utils for browser",
   "main": "index.js",
+  "browser": "browser.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/lovetingyuan/browser-sub-pub.git"
