@@ -1,5 +1,5 @@
 ;(function() {
-  var doc = document
+  var doc = document, a = 'addEventListener', r = 'removeEventListener', d = 'dispatchEvent'
   if (typeof window.CustomEvent !== 'function') {
     window.CustomEvent = function CustomEvent(e, p) {
       p = p || { bubbles: false, cancelable: false, detail: undefined }
@@ -12,19 +12,19 @@
 
   window.listen = function listen(e, cb) {
     if (e && typeof e === 'object') {
-      Object.keys(e).forEach(function(n) { doc.addEventListener(n, e[n]) })
-      return function() {Object.keys(e).forEach(function(n) { doc.removeEventListener(n, e[n]) })}
+      Object.keys(e).forEach(function(n) { doc[a](n, e[n]) })
+      return function() {Object.keys(e).forEach(function(n) { doc[r](n, e[n]) })}
     } else if (e && typeof cb === 'function' && typeof e === 'string') {
-      doc.addEventListener(e, cb)
-      return function() {doc.removeEventListener(event, cb)}
+      doc[a](e, cb)
+      return function() {doc[r](event, cb)}
     }
   }
 
   window.emit = function emit(e, pl) {
     if (e && typeof e === 'object') {
-      Object.keys(e).forEach(function(n) {doc.dispatchEvent(new CustomEvent(n, {detail: e[n]}))})
+      Object.keys(e).forEach(function(n) {doc[d](new CustomEvent(n, {detail: e[n]}))})
     } else if (e && typeof e === 'string') {
-      doc.dispatchEvent(new CustomEvent(e, {detail: pl}))
+      doc[d](new CustomEvent(e, {detail: pl}))
     }
   }
 })();
