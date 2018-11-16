@@ -1,5 +1,5 @@
 # browser-sub-pub
-sub &amp; pub utils for browser
+sub &amp; pub utils for browser(IE9+), based on `CustomEvent` and `dispatchEvent`
 
 ## install
 ```bash
