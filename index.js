@@ -13,7 +13,7 @@ export function listen(event, callback) {
     Object.keys(event).forEach(function(n) { document.addEventListener(n, event[n]) })
     return function() {Object.keys(event).forEach(function(n) { document.removeEventListener(n, event[n]) })}
   } else if (event && typeof callback === 'function' && typeof event === 'string') {
-    document.addEventListener(event, callback);
+    document.addEventListener(event, callback)
     return function() {document.removeEventListener(event, callback)}
   }
 }
