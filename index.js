@@ -9,19 +9,21 @@ if (typeof window.CustomEvent !== 'function') {
 }
 
 export function listen(event, callback) {
+  const win = window;
   if (event && typeof event === 'object') {
-    Object.keys(event).forEach(function(n) { document.addEventListener(n, event[n]) })
-    return function() {Object.keys(event).forEach(function(n) { document.removeEventListener(n, event[n]) })}
+    Object.keys(event).forEach(function(n) { win.addEventListener(n, event[n]) })
+    return function() {Object.keys(event).forEach(function(n) { win.removeEventListener(n, event[n]) })}
   } else if (event && typeof callback === 'function' && typeof event === 'string') {
-    document.addEventListener(event, callback)
-    return function() {document.removeEventListener(event, callback)}
+    win.addEventListener(event, callback)
+    return function() {win.removeEventListener(event, callback)}
   }
 }
 
 export function emit(event, payload) {
+  const win = window;
   if (event && typeof event === 'object') {
-    Object.keys(event).forEach(function(n) {document.dispatchEvent(new CustomEvent(n, {detail: event[n]}))})
+    Object.keys(event).forEach(function(n) {win.dispatchEvent(new CustomEvent(n, {detail: event[n]}))})
   } else if (event && typeof event === 'string') {
-    document.dispatchEvent(new CustomEvent(event, {detail: payload}))
+    win.dispatchEvent(new CustomEvent(event, {detail: payload}))
   }
 }

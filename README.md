@@ -9,6 +9,7 @@ npm install browser-sub-pub --save-dev
 ## usage
 ```html
   <script src="browser-sub-pub/browser.js"></script>
+  <!-- export global namespace: SP, eg: SP.listen, SP.emit -->
 ```
 or
 ```javascript

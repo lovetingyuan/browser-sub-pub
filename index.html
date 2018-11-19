@@ -4,13 +4,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+  <title>test</title>
   <script src="./browser.js"></script>
 </head>
 <body>
   <script>
-    listen('test', function(e) {alert(e.detail)})
-    emit('test', 'test it.')
+    SP.listen('test', function(e) {alert(e.detail)})
+    SP.emit('test', 'test it.')
+  </script>
+  <script type="module">
+    import { emit as emitModule, listen as listenModule } from './index.js'
+    listenModule('test-module', function(e) {alert(e.detail)})
+    emitModule('test-module', 'test it in module.')
   </script>
 </body>
 </html>
