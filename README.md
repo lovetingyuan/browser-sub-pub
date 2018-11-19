@@ -13,7 +13,7 @@ npm install browser-sub-pub --save-dev
 ```
 or
 ```javascript
-import { listen, emit } from 'node_modules/browser-sub-pub/index.js'
+import { listen, emit, once } from 'node_modules/browser-sub-pub/index.js'
 const unlisten = listen('event-a', e => e.detail) // 'aaa'
 emit('event-a', 'aaa')
 unlisten() // remove listener of 'event-a'
@@ -26,4 +26,7 @@ emit({
   eventA: 'event-aaa',
   eventB: 'event-bbb'
 })
+
+once('event-once', e => e.detail) // 'only trigger once'
+emit('event-once', 'only trigger once')
 ```

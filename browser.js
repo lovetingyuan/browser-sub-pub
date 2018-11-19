@@ -12,7 +12,8 @@
 
   win.SP = {
     listen: listen,
-    emit: emit
+    emit: emit,
+    once: once
   };
 
   function listen(e, cb) {
@@ -22,6 +23,16 @@
     } else if (e && typeof cb === 'function' && typeof e === 'string') {
       win[a](e, cb)
       return function() {win[r](event, cb)}
+    }
+  }
+
+  function once(event, callback) {
+    if (typeof event === 'string' && typeof callback === 'function') {
+      var handler = function(e) {
+        window.removeEventListener(event, handler)
+        return callback(e)
+      }
+      window.addEventListener(event, handler)
     }
   }
 

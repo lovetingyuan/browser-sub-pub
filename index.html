@@ -13,9 +13,12 @@
     SP.emit('test', 'test it.')
   </script>
   <script type="module">
-    import { emit as emitModule, listen as listenModule } from './index.js'
+    import { emit as emitModule, listen as listenModule, once as onceModule } from './index.js'
     listenModule('test-module', function(e) {alert(e.detail)})
     emitModule('test-module', 'test it in module.')
+    onceModule('test-once-module', e => alert(e.detail));
+    emitModule('test-once-module', 'only emit once')
+    emitModule('test-once-module', 'only emit once!!!')
   </script>
 </body>
 </html>

@@ -19,6 +19,16 @@ export function listen(event, callback) {
   }
 }
 
+export function once(event, callback) {
+  if (typeof event === 'string' && typeof callback === 'function') {
+    var handler = function(e) {
+      window.removeEventListener(event, handler)
+      return callback(e)
+    }
+    window.addEventListener(event, handler)
+  }
+}
+
 export function emit(event, payload) {
   const win = window;
   if (event && typeof event === 'object') {
